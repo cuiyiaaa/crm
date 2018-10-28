@@ -14,7 +14,6 @@
         <module>crm_web</module>
     </modules>
 
-    <!-- 统一管理jar包版本 -->
     <properties>
         <spring.version>5.0.2.RELEASE</spring.version>
         <slf4j.version>1.6.6</slf4j.version>
@@ -24,8 +23,7 @@
         <mybatis.version>3.4.5</mybatis.version>
         <spring.security.version>5.0.1.RELEASE</spring.security.version>
     </properties>
-
-    <!-- 锁定jar包版本 -->
+    <!--只会锁定jar包版本号不会真正导入jar包-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -65,33 +63,8 @@
     <dependencies>
         <!-- spring -->
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.6.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
@@ -104,9 +77,38 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!--切入点表达式-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.8</version>
+        </dependency>
+        <!--SpringAOP-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <!--spring测试-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--springmvc-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
@@ -114,40 +116,58 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!--spring事务-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <!--测试-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <!--mysql驱动包-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
+
+        <!--servlet包-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--jsp包-->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--jstl依赖包-->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!-- log start -->
+
+        <!-- 日志 start -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -163,7 +183,9 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <!-- log end -->
+        <!-- 日志 end -->
+
+        <!--mybatis核心包-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -174,6 +196,8 @@
             <artifactId>mybatis-spring</artifactId>
             <version>1.3.0</version>
         </dependency>
+
+        <!--C3P0连接池-->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
@@ -181,6 +205,7 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
@@ -206,10 +231,20 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+
+        <!--德鲁伊连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.9</version>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <!-- 添加tomcat7插件 -->
@@ -219,8 +254,26 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
+                <configuration>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <port>8080</port>
+                    <!--配置虚拟路径-->
+                    <path>/parent</path>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <!--编译环境-->
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!--当前所有的java代码使用1.9-->
+                    <target>1.9</target>
+                    <!--编译后的class文件使用1.9-->
+                    <source>1.9</source>
+                    <!--编码-->
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
