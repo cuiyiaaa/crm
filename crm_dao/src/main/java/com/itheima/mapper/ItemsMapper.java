@@ -1,4 +1,4 @@
-package itheima.mapper;
+package com.itheima.mapper;
 
 import com.itheima.domain.Items;
 

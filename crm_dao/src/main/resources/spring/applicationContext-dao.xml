@@ -22,13 +22,13 @@
         <!--配置数据源-->
         <property name="dataSource" ref="dataSource"/>
         <!--扫描pojo包，给包下的所有pojo配置别名-->
-        <property name="typeAliasesPackage" value="com.itheima.domain"/>
+        <property name="typeAliasesPackage" value="com.com.itheima.domain"/>
     </bean>
 
     <!--扫描接口包路径，生成包下所有接口的代理对象，并且放入Spring容器中-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--配置接口路径-->
-        <property name="basePackage" value="com.itheima.mapper"/>
+        <property name="basePackage" value="com.com.itheima.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>
